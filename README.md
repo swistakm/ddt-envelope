@@ -8,9 +8,9 @@ Simple solution to use django-debug-toolbar with non HTML views. Helps in e.g. p
 Instalation
 ===========
 
-#. Add the debug_toolbar directory to your Python path.
+1. Add the debug_toolbar directory to your Python path.
 
-#. Add `ddt-envelope` to your `INSTALLED_APPS`:
+2. Add `ddt-envelope` to your `INSTALLED_APPS`:
 
    ```
    INSTALLED_APPS = (
@@ -18,7 +18,7 @@ Instalation
        'ddt_envelope',
    )
    ```
-#. Add `ddt_envelope` to your `urls.py`
+3. Add `ddt_envelope` to your `urls.py`
 
    ```
    urlpatterns = patterns('',

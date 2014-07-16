@@ -8,7 +8,11 @@ Simple solution to use django-debug-toolbar with non HTML views. Helps in e.g. p
 Instalation
 ===========
 
-1. Add the debug_toolbar directory to your Python path.
+1. Install with pip:
+
+   ```
+   pip install ddt-envelope
+   ```
 
 2. Add `ddt-envelope` to your `INSTALLED_APPS`:
 

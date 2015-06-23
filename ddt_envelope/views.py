@@ -7,8 +7,8 @@ from django.core import urlresolvers
 class EnvelopeView(TemplateView):
     template_name = 'ddte/envelope.html'
 
-    def get_target_view_response(self, request, url):
-        target_view = urlresolvers.resolve(url)
+    def get_target_view_response(self, request, path):
+        target_view = urlresolvers.resolve(path)
 
         view_response = target_view.func(
             request,
@@ -22,8 +22,8 @@ class EnvelopeView(TemplateView):
         return content
 
     def get(self, request, *args, **kwargs):
-        url = "/" + kwargs.get("next")
-        target_response = self.get_target_view_response(request, url)
+        path = "/" + kwargs.get("next")
+        target_response = self.get_target_view_response(request, path)
 
         if self.is_json(target_response):
             content = self.reformat_json(target_response.content)
@@ -31,7 +31,7 @@ class EnvelopeView(TemplateView):
             content = target_response.content
 
         return self.render_to_response({
-            'url': url,
+            'path': path,
             'content': content,
             'response': target_response,
             'headers': dict([

@@ -38,7 +38,7 @@ setup(
     version=VERSION,
     packages=find_packages(exclude=['testapp']),
 
-    author=u'Michał Jaworski',
+    author='Michał Jaworski',
     author_email='swistakm@gmail.com',
 
     description='Simple helper for inspecting non-html '
@@ -51,11 +51,23 @@ setup(
     include_package_data=True,
 
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Framework :: Django',
+        'Framework :: Django :: 1.4'
+        'Framework :: Django :: 1.5'
+        'Framework :: Django :: 1.6'
+        'Framework :: Django :: 1.7'
+        'Framework :: Django :: 1.8'
     ],
 )

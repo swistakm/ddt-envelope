@@ -7,6 +7,10 @@ Simple solution to use django-debug-toolbar with non HTML views. Helps
 in inspecting/profiling endpoints that do not return HTML responses 
 (like JSON endpoint).
 
+It is tested on latest point releases of: `django1.4`, `django1.5`, `django1.6`,
+`django1.7`, `django1.8` and each python version that is supported by given
+django releases accordingly (ie. `python2.6`, `python2.7`, `python3.2`,
+`python3.3`, `python3.4`).
 
 # Instalation
 

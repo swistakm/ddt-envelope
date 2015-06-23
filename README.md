@@ -14,21 +14,21 @@ django releases accordingly (ie. `python2.6`, `python2.7`, `python3.2`,
 
 # Instalation
 
-1. Install with pip:
+0. Install with pip:
 
-   ```
-   pip install ddt-envelope
-   ```
+    ```
+    pip install ddt-envelope
+    ```
 
-2. Add `ddt-envelope` to your `INSTALLED_APPS`:
+0. Add `ddt-envelope` to your `INSTALLED_APPS`:
 
-   ```python
+    ```python
    
-   if DEBUG is True:
-       INSTALLED_APPS += (
-           'ddt_envelope',
-       )
-   ```
+    if DEBUG is True:
+        INSTALLED_APPS += (
+            'ddt_envelope',
+        )
+    ```
   
 3. Add `ddt_envelope` at the end of your `urls.py`
 

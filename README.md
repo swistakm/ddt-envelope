@@ -1,12 +1,14 @@
-============
-ddt-envelope
-============
+[![Build Status](https://travis-ci.org/swistakm/ddt-envelope.svg)](https://travis-ci.org/swistakm/ddt-envelope)
+[![Coverage Status](https://coveralls.io/repos/swistakm/ddt-envelope/badge.svg)](https://coveralls.io/r/swistakm/ddt-envelope)
 
-Simple solution to use django-debug-toolbar with non HTML views. Helps in e.g. profiling RESTful APIs.
+# ddt-envelope
+
+Simple solution to use django-debug-toolbar with non HTML views. Helps 
+in inspecting/profiling endpoints that do not return HTML responses 
+(like JSON endpoint).
 
 
-Instalation
-===========
+# Instalation
 
 1. Install with pip:
 
@@ -16,26 +18,45 @@ Instalation
 
 2. Add `ddt-envelope` to your `INSTALLED_APPS`:
 
+   ```python
+   
+   if DEBUG is True:
+       INSTALLED_APPS += (
+           'ddt_envelope',
+       )
    ```
-   INSTALLED_APPS = (
-       ...
-       'ddt_envelope',
-   )
-   ```
-3. Add `ddt_envelope` to your `urls.py`
+  
+3. Add `ddt_envelope` at the end of your `urls.py`
 
-   ```
-   urlpatterns = patterns('',
-       ...
-       url(r'^__ddte__/', include('ddt_envelope.urls')),
-   )
-   ```
+    ```python
+    from django.conf import settings
+    
+    if 'ddt_envelope' in settings.INSTALLED_APPS:
+       urlpatterns += patterns('',
+           # note: you can use any other prefix than '__ddte__' but make
+           #       shure it does not conflict with other url patterns
+           url(r'^__ddte__/', include('ddt_envelope.urls')),
+       )
+    ```
 
-Using ddt-envelope
-==================
+# Usage
 
-To inspect non-html view with ddt-envelope just insert `__ddte__` after hostname, e.g.:
+Once installed and configured just insert `__ddte__` or your custom prefix 
+after hostname in browser of choice to inspect non-html views like:
 
 ```
 http://example.com/__ddte__/maybe/json/
 ```
+
+# Customizing output
+
+You can customize `ddt_envelope` responses either by providing custom
+template name for `ddt_envelope.views.EnvelopeView` or by overriding
+`ddte/envelope.html` template. Context variables passed to this templeta are:
+
+* `path` - "real" path of inspected view
+* `response` - response object returned by target inspected view
+* `headers` - dictionary of headers available in response returned by target 
+  inspected view
+* `content` - string with raw response content. For JSON it will be reformated
+  JSON response (using `json.dumps(..., indent=4)`)

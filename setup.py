@@ -2,20 +2,36 @@
 import os
 from setuptools import setup, find_packages
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
-
 
 def get_version(version_tuple):
     if not isinstance(version_tuple[-1], int):
         return '.'.join(map(str, version_tuple[:-1])) + version_tuple[-1]
     return '.'.join(map(str, version_tuple))
 
+
+try:
+    from pypandoc import convert
+
+    def read_md(f):
+        return convert(f, 'rst')
+except ImportError:
+    convert = None
+    print(
+        "warning: pypandoc module not found, could not convert Markdown to RST"
+    )
+
+    def read_md(f):
+        return open(f, 'r').read()  # noqa
+
+
 init = os.path.join(
     os.path.dirname(__file__),
     'ddt_envelope', '__init__.py'
 )
 version_line = list(filter(lambda l: l.startswith('VERSION'), open(init)))[0]
+
 VERSION = get_version(eval(version_line.split('=')[-1]))
+README = os.path.join(os.path.dirname(__file__), 'README.md')
 
 setup(
     name='ddt-envelope',
@@ -28,7 +44,7 @@ setup(
     description='Simple helper for inspecting non-html '
                 'views with django-debug-toolbar ',
 
-    long_description=README,
+    long_description=read_md(README),
     url="https://github.com/swistakm/ddt-envelope",
 
     install_requires=(),

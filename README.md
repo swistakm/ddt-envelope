@@ -33,8 +33,8 @@ in inspecting/profiling endpoints that do not return HTML responses
     
     if 'ddt_envelope' in settings.INSTALLED_APPS:
        urlpatterns += patterns('',
-           # note: you can use any other prefix than '__ddte__' but make
-           #       shure it does not conflict with other url patterns
+           # note: you can use any prefix other than '__ddte__' but make
+           #       sure it does not conflict with other url patterns
            url(r'^__ddte__/', include('ddt_envelope.urls')),
        )
     ```
@@ -58,5 +58,5 @@ template name for `ddt_envelope.views.EnvelopeView` or by overriding
 * `response` - response object returned by target inspected view
 * `headers` - dictionary of headers available in response returned by target 
   inspected view
-* `content` - string with raw response content. For JSON it will be reformated
-  JSON response (using `json.dumps(..., indent=4)`)
+* `content` - string with raw response content (JSON it will be reformated
+  using `json.dumps(..., indent=4)`)

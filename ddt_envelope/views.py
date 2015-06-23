@@ -5,7 +5,7 @@ from django.core import urlresolvers
 
 
 class EnvelopeView(TemplateView):
-    template_name = 'ddt_envelope/envelope.html'
+    template_name = 'ddte/envelope.html'
 
     def get_target_view_response(self, request, url):
         target_view = urlresolvers.resolve(url)

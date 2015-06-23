@@ -2,12 +2,23 @@
 <html>
 <head>
     <title>DEBUG ({{url}})</title>
+    <style>
+        body {
+            margin-top: 2em;
+            margin-left: 4em;
+        }
+    </style>
 </head>
 <body>
 
-<code>
-    {{ content }}
-</code>
+<strong><code>Response headers:</code></strong>
+<pre>
+{{ headers }}
+</pre>
+<strong><code>Response content:</code></strong>
+<pre>
+{{ content }}
+</pre>
 
 </body>
 </html>

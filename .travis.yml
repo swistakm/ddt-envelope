@@ -1,0 +1,38 @@
+language: python
+python: 2.7
+env:
+  - TOX_ENV=py26-django14
+  - TOX_ENV=py26-django15
+  - TOX_ENV=py26-django16
+
+  - TOX_ENV=py27-django14
+  - TOX_ENV=py27-django15
+  - TOX_ENV=py27-django16
+  - TOX_ENV=py27-django17
+  - TOX_ENV=py27-django18
+
+  - TOX_ENV=py32-django15
+  - TOX_ENV=py32-django16
+  - TOX_ENV=py32-django17
+  - TOX_ENV=py32-django18
+
+  - TOX_ENV=py33-django15
+  - TOX_ENV=py33-django16
+  - TOX_ENV=py33-django17
+  - TOX_ENV=py33-django18
+
+  - TOX_ENV=py34-django17
+  - TOX_ENV=py34-django18
+
+  - TOX_ENV=coverage
+  - TOX_ENV=pep8
+
+install:
+  - pip install tox==2.0.2
+
+script:
+  - tox -e $TOX_ENV
+
+notifications:
+  email:
+    - swistakm@gmail.com

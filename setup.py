@@ -20,7 +20,7 @@ VERSION = get_version(eval(version_line.split('=')[-1]))
 setup(
     name='ddt-envelope',
     version=VERSION,
-    packages=find_packages(),
+    packages=find_packages(exclude=['testapp']),
 
     author=u'Michał Jaworski',
     author_email='swistakm@gmail.com',
@@ -31,10 +31,8 @@ setup(
     long_description=README,
     url="https://github.com/swistakm/ddt-envelope",
 
-    install_requires=(
-        'django',
-        'django-debug-toolbar',
-    ),
+    install_requires=(),
+    include_package_data=True,
 
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -45,4 +43,3 @@ setup(
         'Programming Language :: Python :: 2',
     ],
 )
-
